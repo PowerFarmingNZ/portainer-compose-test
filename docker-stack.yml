@@ -11,6 +11,13 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+      labels:
+          - "traefik.frontend.rule=Host:whoami-swarmtest.$DOCKER_DC.$DOCKER_BASEDOMAIN"
+          - "traefik.port=80"
+          - "traefik.docker.network=web-ingress"
+          - "traefik.backend=whoami-swarmtest"
+          - "traefik.frontend.entryPoints=http,https"
+          - "traefik.enable=true"
 
 networks:
   local:
