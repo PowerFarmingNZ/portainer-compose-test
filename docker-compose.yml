@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  whoami:
+    image: emilevauge/whoami
+    ports:
+      - "80"
+    networks:
+      - web-ingress
+      - local
+
+networks:
+  local:
+    driver: bridge
+  web-ingress:
+      external: true

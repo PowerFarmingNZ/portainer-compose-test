@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  whoami:
+    image: emilevauge/whoami
+    ports:
+      - "80"
+    networks:
+      - web-ingress
+      - local
+    deploy:
+      mode: replicated
+      replicas: 1
+
+networks:
+  local:
+    driver: bridge
+  web-ingress:
+      external: true
