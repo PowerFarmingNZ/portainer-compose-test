@@ -7,7 +7,6 @@ services:
       - "80"
     networks:
       - web-ingress
-      - local
     deploy:
       mode: replicated
       replicas: 1
@@ -20,7 +19,5 @@ services:
           - "traefik.enable=true"
 
 networks:
-  local:
-    driver: bridge
   web-ingress:
       external: true
